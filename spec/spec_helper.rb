@@ -25,9 +25,8 @@ require 'webmock/rspec'
 require './spec/support/request_helpers'
 
 # Peform all Sidekiq worker tasks immediately during testing
-require 'sidekiq'
-require 'sidekiq/testing'
 require 'sidekiq-unique-jobs'
+Sidekiq.testing!(:fake)
 Sidekiq::Testing.inline!
 Sidekiq.logger.level = Logger::WARN
 
